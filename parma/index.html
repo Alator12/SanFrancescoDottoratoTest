@@ -1,0 +1,427 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>San Francesco del Prato - Resound</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e9e4d8;--ink:#23262c;--mute:#5d6068;--acc:#8a6a1f;--accfg:#fff;--line:#b9b2a2;--panel:#f3efe5;--tilefilter:sepia(.3) saturate(.6) brightness(1.02);
+--serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;--sans:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171d27;--ink:#e7e2d6;--mute:#9aa0ab;--acc:#d2ab52;--accfg:#171d27;--line:#3a4454;--panel:#1f2733;--tilefilter:invert(1) hue-rotate(180deg) saturate(.35) brightness(.75) contrast(.9);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171d27;--ink:#e7e2d6;--mute:#9aa0ab;--acc:#d2ab52;--accfg:#171d27;--line:#3a4454;--panel:#1f2733;--tilefilter:invert(1) hue-rotate(180deg) saturate(.35) brightness(.75) contrast(.9);color-scheme:dark}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1rem;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.screen{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;padding:0 1.25rem 1.5rem;position:relative;overflow:hidden}
+.screen[hidden]{display:none}
+h1,h2{font-family:var(--serif);font-weight:600;line-height:1.05;margin:0;text-wrap:balance}
+.btn{border:1px solid var(--acc);background:var(--acc);color:var(--accfg);padding:.85rem 2.4rem;border-radius:999px;font-weight:600;font-size:1.05rem;letter-spacing:.02em}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:hover{filter:brightness(1.08)}
+.gear{position:absolute;top:.9rem;right:1rem;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);display:grid;place-items:center}
+.gear svg{width:22px;height:22px}
+/* home */
+#home{justify-content:center;text-align:center;gap:2rem}
+#home h1{font-size:clamp(2.6rem,9vw,5.2rem);max-width:12ch;position:relative;z-index:1}
+#home .actions{display:flex;flex-direction:column;gap:.8rem;align-items:center;position:relative;z-index:1}
+.rings{position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none}
+.rings i{position:absolute;border:1px solid var(--acc);border-radius:50%;width:140vmax;height:140vmax;left:-70vmax;top:-70vmax;opacity:0;transform:scale(.02);animation:ring 12s cubic-bezier(.2,.5,.3,1) infinite}
+.rings i:nth-child(2){animation-delay:3s}.rings i:nth-child(3){animation-delay:6s}.rings i:nth-child(4){animation-delay:9s}
+@keyframes ring{0%{opacity:.55;transform:scale(.02)}100%{opacity:0;transform:scale(1)}}
+.credits{position:absolute;bottom:1.2rem;left:0;right:0;text-align:center;color:var(--mute);font-size:.9rem;padding:0 1rem}
+/* piazza */
+.col{width:100%;max-width:40rem;padding-top:4.5rem}
+#piazza .col{display:flex;flex-direction:column;gap:1.5rem}
+#piazza h1{font-size:clamp(2.4rem,8vw,4rem)}
+.prose{font-family:var(--serif);font-size:1.25rem;line-height:1.65;margin:0;max-width:62ch}
+#enter{align-self:flex-start;margin-top:.5rem}
+#piazza .map{aspect-ratio:4/3;width:100%;touch-action:pan-y;cursor:default}
+.map.sim{touch-action:none;cursor:crosshair}
+.tiles{position:absolute;inset:0;filter:var(--tilefilter);opacity:.9;pointer-events:none}
+.tiles img{position:absolute;display:block;max-width:none}
+.poly{fill:var(--acc);fill-opacity:.2;stroke:var(--acc);stroke-width:2.5;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.row{display:flex;gap:.7rem;flex-wrap:wrap}
+.row .btn{padding:.6rem 1.3rem;font-size:.95rem}
+.attr{margin:-.9rem 0 0;font-size:.75rem;color:var(--mute)}
+.listen{text-align:left}
+/* chiesa */
+#chiesa .col{max-width:46rem;display:flex;flex-direction:column;gap:1.1rem;align-items:center}
+#chiesa h1{font-size:clamp(1.8rem,6vw,2.8rem);text-align:center;padding:0 3.2rem}
+.plan{position:relative;width:min(100%,44rem);aspect-ratio:1278/561;background:var(--panel);border:3px solid var(--acc);border-radius:2px;overflow:hidden;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.ring{position:absolute;aspect-ratio:1;border:1px dashed var(--acc);border-radius:50%;transform:translate(-50%,-50%);opacity:calc(.15 + var(--g,0)*.6);pointer-events:none}
+.pt{position:absolute;width:1.9rem;height:1.9rem;border-radius:50%;background:var(--bg);color:var(--ink);border:2px solid var(--acc);transform:translate(-50%,-50%) scale(calc(1 + var(--g,0)*.45));box-shadow:0 0 calc(var(--g,0)*26px) calc(var(--g,0)*6px) var(--acc);pointer-events:none;display:grid;place-items:center;font-size:.8rem;font-weight:600}
+.lbl{position:absolute;font-size:.78rem;color:var(--mute);transform:translate(-50%,0);margin-top:1.3rem;pointer-events:none;white-space:nowrap}
+.me{position:absolute;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--ink);border:3px solid var(--acc);transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.plan svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.info{align-self:stretch;animation:fade .5s ease}
+.info h2{font-size:1.9rem;margin-bottom:.5rem}
+.info[hidden]{display:none}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.plan{transition:border-color 1.2s}.plan.pris{border-color:var(--mute)}
+.listen{margin:0;min-height:1.6em;color:var(--mute);font-size:.95rem;text-align:center}
+#chiesa .prose{font-size:1.15rem}
+/* settings */
+#settings{position:fixed;inset:0;z-index:20;background:rgba(10,12,16,.6);display:grid;place-items:center;padding:1.25rem}
+#settings[hidden]{display:none}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.6rem;width:100%;max-width:24rem;display:flex;flex-direction:column;gap:1.2rem}
+.card h2{font-size:2rem}
+.card label{display:flex;justify-content:space-between;font-weight:600}
+input[type=range]{width:100%;accent-color:var(--acc);height:2rem}
+.card .btn{padding:.7rem 1.4rem}
+@media (prefers-reduced-motion:reduce){.rings i{animation:none;opacity:.12;transform:scale(.3)}}
+</style>
+</head>
+<body>
+
+<main id="home" class="screen">
+  <div class="rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <h1>San Francesco del Prato - Resound</h1>
+  <div class="actions">
+    <button class="btn" id="go">Viaggia</button>
+    <button class="btn ghost" data-settings>Impostazioni</button>
+  </div>
+  <div class="credits">Andrea Dell’Innocenti - Phd Castelfranco Veneto e Parma</div>
+</main>
+
+<main id="piazza" class="screen" hidden>
+  <button class="gear" data-settings aria-label="Impostazioni"></button>
+  <div class="col">
+    <h1>Piazza del Prato</h1>
+    <p class="prose" id="lorem1"></p>
+    <div class="plan map" id="map" role="img" aria-label="Mappa del piazzale con il poligono dell’area sonora"><div class="tiles" id="tiles"></div></div>
+    <div class="row"><button class="btn ghost" id="gps">Attiva GPS</button><button class="btn ghost" id="sim">Prova senza GPS</button></div>
+    <p class="listen" id="mapStat">Attiva il GPS, o prova senza GPS, per avvicinarti al punto sonoro del piazzale.</p>
+    <p class="attr">Mappa © OpenStreetMap contributors</p>
+    <button class="btn" id="enter">Entra in chiesa</button>
+  </div>
+</main>
+
+<main id="chiesa" class="screen" hidden>
+  <button class="gear" data-settings aria-label="Impostazioni"></button>
+  <div class="col">
+    <h1>San Francesco del Prato</h1>
+    <div class="plan" id="plan" tabindex="0" role="application" aria-label="Planimetria della chiesa. Trascina il punto o usa le frecce per muoverti.">
+    </div>
+    <button class="btn ghost" id="mode">Passa ai suoni della prigione</button>
+    <p class="listen" id="listen">Trascina il punto e avvicinati a una sorgente per ascoltarla</p>
+    <div class="info" id="info" hidden><h2 id="infoT"></h2><p class="prose" id="infoP"></p></div>
+  </div>
+</main>
+
+<div id="settings" hidden>
+  <div class="card" role="dialog" aria-modal="true" aria-labelledby="st">
+    <h2 id="st">Impostazioni</h2>
+    <label for="vol"><span>Volume</span><span id="volv">70%</span></label>
+    <input type="range" id="vol" min="0" max="100" value="70">
+    <button class="btn" id="close">Chiudi</button>
+    <button class="btn ghost" id="restart" hidden>Torna all’inizio</button>
+  </div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const GEAR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>';
+document.querySelectorAll('.gear').forEach(g=>g.innerHTML=GEAR);
+
+/* lorem ipsum: esattamente 300 parole */
+function lorem(n){
+  const w="lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation ullamco laboris nisi aliquip ex ea commodo consequat duis aute irure in reprehenderit voluptate velit esse cillum fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum".split(" ");
+  let s=7,out=[],c=0;const r=()=>(s=(s*1103515245+12345)&0x7fffffff)/0x7fffffff;
+  while(c<n){let L=Math.min(n-c,7+Math.floor(r()*7));const a=[];
+    for(let i=0;i<L;i++)a.push(c+i===0&&false?w[0]:w[Math.floor(r()*w.length)]);
+    a[0]=a[0][0].toUpperCase()+a[0].slice(1);out.push(a.join(" ")+".");c+=L;}
+  return out.join(" ");
+}
+$('#lorem1').textContent=lorem(300);
+
+/* navigazione */
+let current='home',prev='home';
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.hidden=s.id!==id);current=id;window.scrollTo(0,0);
+  if(id==='piazza'||id==='chiesa')startAudio();else stopAudio();
+  if(id!=='piazza')stopGps();update();updatePiazza();}
+$('#go').onclick=()=>show('piazza');
+$('#enter').onclick=()=>show('chiesa');
+
+/* impostazioni */
+let vol=.7;
+const setEl=$('#settings');
+document.querySelectorAll('[data-settings]').forEach(b=>b.onclick=()=>{$('#restart').hidden=current==='home';setEl.hidden=false;$('#vol').focus()});
+$('#close').onclick=()=>setEl.hidden=true;
+setEl.addEventListener('click',e=>{if(e.target===setEl)setEl.hidden=true});
+addEventListener('keydown',e=>{if(e.key==='Escape')setEl.hidden=true});
+$('#restart').onclick=()=>{setEl.hidden=true;show('home')};
+$('#vol').oninput=e=>{vol=e.target.value/100;$('#volv').textContent=e.target.value+'%';applyMaster()};
+function applyMaster(){if(master)master.gain.setTargetAtTime(vol*vol,ctx.currentTime,.03)}
+
+/* planimetria */
+const SRC=[
+ {n:'Organo',x:.19,y:.40},{n:'Campane',x:.93,y:.40},{n:'Coro',x:.19,y:.84},{n:'Acqua',x:.93,y:.84},{n:'Arpa',x:.56,y:.62}];
+const AR=561/1278;                             // rapporto altezza/larghezza della pianta
+const R=.30;                                   // raggio d’ascolto in larghezze di pianta
+const BX=[.17,.95],BY=[.33,.93];               // area percorribile (navata)
+const P=v=>v*100+'%';
+const plan=$('#plan');
+plan.insertAdjacentHTML('afterbegin',`<svg viewBox="0 0 1278 561" preserveAspectRatio="none" aria-hidden="true">
+<g fill="none" stroke="var(--mute)" stroke-width="4" opacity=".55">
+<rect x="60" y="12" width="125" height="110"/><path d="M335 180V70Q392 20 450 70V180"/><rect x="570" y="12" width="200" height="168"/><rect x="890" y="70" width="330" height="110"/><path d="M1005 70V180M1115 70V180"/>
+<path d="M360 520V552H540V520M780 520V552H885V520M1100 520V552"/></g>
+<path d="M215 180H1225V520H215V440A200 92 0 0 1 215 256Z" fill="none" stroke="var(--acc)" stroke-width="9" stroke-linejoin="round"/>
+<path d="M1225 300V370" stroke="var(--panel)" stroke-width="12"/>
+<g fill="var(--mute)" opacity=".7"><circle cx="460" cy="266" r="13"/><circle cx="672" cy="266" r="13"/><circle cx="885" cy="266" r="13"/><circle cx="1100" cy="266" r="13"/><circle cx="458" cy="440" r="13"/><circle cx="672" cy="440" r="13"/><circle cx="884" cy="440" r="13"/><circle cx="1098" cy="440" r="13"/></g></svg>`);
+SRC.forEach((s,i)=>{
+  const ring=document.createElement('div');ring.className='ring';
+  ring.style.cssText=`left:${P(s.x)};top:${P(s.y)};width:${2*R*100}%`;
+  const pt=document.createElement('div');pt.className='pt';pt.textContent=i+1;pt.style.left=P(s.x);pt.style.top=P(s.y);
+  const lb=document.createElement('div');lb.className='lbl';lb.textContent=s.n;lb.style.left=P(s.x);lb.style.top=P(s.y);
+  s.ring=ring;s.pt=pt;s.lb=lb;plan.append(ring,pt,lb);
+});
+const me=document.createElement('div');me.className='me';plan.append(me);
+let pos={x:.56,y:.9};
+const clampPos=()=>{pos.x=Math.max(BX[0],Math.min(BX[1],pos.x));pos.y=Math.max(BY[0],Math.min(BY[1],pos.y))};
+
+function gains(){
+  const g=SRC.map(s=>{const d=Math.hypot(pos.x-s.x,(pos.y-s.y)*AR);
+    return d<R?Math.pow(Math.cos(d/R*Math.PI/2),2):0});
+  const gt=Math.max(...g),dom=g.map(v=>v>0?Math.max(0,v*1.7-.7*gt):0); // la più vicina domina, le altre si spengono
+  for(let i=0;i<g.length;i++)g[i]=dom[i];
+  // massimo 3 sorgenti: si sottrae il 4° livello (soglia morbida, nessuno scatto), poi si normalizza la potenza
+  const srt=[...g].sort((a,b)=>b-a),t=srt[3]||0;
+  const f=g.map(v=>t<1?Math.max(0,v-t)/(1-t):0);
+  const nrm=Math.max(1,Math.sqrt(f.reduce((a,b)=>a+b*b,0)));
+  return f.map(v=>v/nrm);
+}
+function update(){
+  me.style.left=P(pos.x);me.style.top=P(pos.y);
+  const g=gains();
+  SRC.forEach((s,i)=>{s.pt.style.setProperty('--g',g[i]);s.ring.style.setProperty('--g',g[i]);
+    if(s.bus&&ctx){s.bus.gain.setTargetAtTime(g[i]*.8*(current==='chiesa'?1:0),ctx.currentTime,.06);
+      if(s.pan)s.pan.pan.setTargetAtTime(Math.max(-1,Math.min(1,(s.x-pos.x)*2.5)),ctx.currentTime,.06)}});
+  showInfo();
+  const on=SRC.filter((s,i)=>g[i]>.03).sort((a,b)=>g[SRC.indexOf(b)]-g[SRC.indexOf(a)]).map(s=>s.n);
+  $('#listen').textContent=on.length?'In ascolto: '+on.join(', '):'Silenzio: avvicinati a una sorgente';
+}
+const TXT=[[
+['Organo','L’organo è la voce della navata. Il suo suono grave non nasce in un punto preciso: sale dalle pareti, riempie il volume e si deposita lentamente. In questa postazione il bordone ricorda come una chiesa non sia solo un luogo da guardare, ma uno strumento da abitare. Le grandi dimensioni, i materiali duri e le superfici alte allungano ogni nota e ne cambiano il carattere, trasformando un suono semplice in una presenza fisica che si avverte nel petto prima ancora che nelle orecchie. Il progetto vuole restituire questa dimensione: capire come la forma dell’edificio modelli la musica che ospita e come, nei secoli, il modo di ascoltare sia cambiato insieme all’architettura. Questo testo è un segnaposto, da sostituire con il contenuto definitivo della ricerca.'],
+['Campane','Le campane parlano oltre le mura. Il loro suono scandiva le ore e univa chi viveva intorno alla chiesa, segnando il tempo comune di una comunità ben prima degli orologi personali. Da questo angolo l’ascolto guarda verso l’esterno: la piazza, le case, la città che risponde. Ogni colpo di campana contiene parziali inarmoniche che si spengono a velocità diverse, e proprio questa irregolarità rende il timbro riconoscibile e quasi vivo. Studiare il paesaggio sonoro significa chiedersi chi fosse in ascolto, da dove e con quale attenzione, e come un segnale pensato per tutti diventasse parte dell’identità di un luogo. Anche questo testo è provvisorio e andrà sostituito con il materiale storico e sonoro raccolto durante il dottorato.'],
+['Coro','Il coro è la presenza umana. Più voci, leggermente diverse per altezza e respiro, si fondono in un suono unico che non appartiene a nessun cantante in particolare. Qui lo spazio si fa liturgico: la parola cantata, la ripetizione, il silenzio tra una frase e l’altra. Nelle chiese francescane la voce accompagnava la preghiera quotidiana e dava forma a una comunità raccolta. Ascoltare un coro in un ambiente riverberante significa percepire anche le pareti, perché ogni vocale viene prolungata e colorata dall’architettura. L’obiettivo è ricostruire digitalmente questa relazione tra voce e luogo, così da poterla attraversare camminando. Il testo è un segnaposto e sarà riscritto con i contenuti definitivi dell’esperienza.'],
+['Acqua','L’acqua porta con sé il tempo. Le gocce che cadono, l’umidità che attraversa i muri, il lento lavorio che nei secoli consuma e trasforma i materiali: in questo punto il suono diventa memoria dell’edificio. A differenza dell’organo o del coro, non c’è intenzione musicale, solo il rumore minuto di ciò che accade quando nessuno suona. È un invito all’ascolto più discreto, quello dei dettagli e del silenzio abitato. Il progetto usa questi suoni come traccia delle trasformazioni, dei restauri e dei diversi usi che il luogo ha conosciuto, lasciando che sia il visitatore a collegarli. Anche questo contenuto è provvisorio e potrà essere sostituito da registrazioni reali e da una narrazione storica verificata.'],
+['Arpa','Al centro della chiesa il suono si fa intimo. Poche note pizzicate, lasciate svanire una a una, costruiscono uno spazio di attenzione in cui chi ascolta diventa il punto di riferimento dell’intera architettura. Da qui ogni parete è alla stessa distanza e le riflessioni tornano da tutte le direzioni, creando un’acustica avvolgente e quasi sospesa. Il centro è il luogo in cui l’esperienza si ricompone: i suoni incontrati negli angoli diventano ricordi, e il visitatore capisce di aver costruito da solo il proprio percorso d’ascolto. È l’idea di fondo della ricerca, un’applicazione che trasforma il cammino in composizione. Come gli altri, questo testo è un segnaposto da sostituire con la versione finale.']],
+[['Chiavi','Il suono delle chiavi è il suono del controllo. Ogni scatto di serratura, ogni catenaccio che si chiude, dava un ritmo preciso alla giornata di chi viveva qui dentro e di chi sorvegliava. L’edificio nato per accogliere la preghiera cambia funzione, e con lui cambia il modo di ascoltarlo: il metallo sostituisce il canto, il rumore secco sostituisce il riverbero lungo. In questa postazione il progetto indaga come un suono di pochi istanti possa raccontare un intero sistema di regole. Testo segnaposto, da sostituire con la ricerca definitiva.'],
+['Passi','I passi sono il movimento dentro i corridoi e lungo la navata trasformata. Un’andatura regolare, il rimbombo sul pavimento, l’eco che torna dalle volte: ascoltare i passi significa capire come lo spazio sia stato attraversato, diviso, controllato. Da qui si avverte la distanza tra chi cammina libero e chi è costretto a percorsi stabiliti. Il suono pesante e ripetuto diventa una misura del tempo, scandito da ore che si somigliano tutte. Testo provvisorio, da sostituire con il materiale storico e le testimonianze raccolte.'],
+['Voci','Le voci sono ciò che resta di una comunità forzata. Un brusio continuo, senza parole distinguibili, fatto di conversazioni, richiami, silenzi improvvisi. Nello stesso luogo in cui un tempo si cantava in coro, ora si sente un mormorio sommesso che riempie l’architettura in modo diverso. Qui il progetto si interroga su chi parlava, a chi, e su come la memoria orale possa essere restituita senza forzarla. Il testo è un segnaposto e verrà riscritto con i contenuti definitivi.'],
+['Vento','Il vento attraversa le aperture e porta con sé la sensazione di isolamento. Il suo sibilo cambia con l’intensità e con le fessure che incontra, e dà voce al freddo, all’attesa, ai tempi vuoti della detenzione. È un suono di confine tra l’interno e l’esterno, che ricorda quanto lo spazio fosse chiuso e quanto il mondo fuori restasse comunque percepibile. Ascoltarlo qui significa riconoscere l’edificio come un grande corpo che respira. Testo provvisorio, in attesa del contenuto finale della ricerca.'],
+['Falegnameria','Al centro, il rumore del lavoro. Sega, martello, colpi di legno: la falegnameria racconta una vita quotidiana fatta di mestieri e di tempo da riempire. Il suono è ritmico, concreto, quasi rassicurante, e contrasta con quello degli altri angoli perché parla di costruzione invece che di chiusura. Da questo punto si ricompone il quadro: il luogo sacro, poi il luogo di pena, e dentro di esso persone che producevano e riparavano. Il progetto vuole restituire questa stratificazione attraverso l’ascolto. Testo segnaposto da sostituire con il contenuto definitivo.']]];
+let shown=-1;
+function showInfo(){
+  let k=-1,best=1;SRC.forEach((s,i)=>{const d=Math.hypot(pos.x-s.x,(pos.y-s.y)*AR);if(d<.10&&d<best){best=d;k=i}});
+  if(k===shown)return;shown=k;const box=$('#info');
+  if(k<0){box.hidden=true;return}
+  $('#infoT').textContent=TXT[mode][k][0];$('#infoP').textContent=TXT[mode][k][1];
+  box.hidden=false;box.style.animation='none';box.offsetWidth;box.style.animation='';
+}
+function moveTo(e){const r=plan.getBoundingClientRect();
+  pos.x=(e.clientX-r.left)/r.width;pos.y=(e.clientY-r.top)/r.height;clampPos();update()}
+plan.addEventListener('pointerdown',e=>{plan.setPointerCapture(e.pointerId);plan.style.cursor='grabbing';moveTo(e)});
+plan.addEventListener('pointermove',e=>{if(plan.hasPointerCapture(e.pointerId))moveTo(e)});
+plan.addEventListener('pointerup',()=>plan.style.cursor='grab');
+plan.addEventListener('keydown',e=>{const k={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];
+  if(k){e.preventDefault();pos.x+=k[0]*.03;pos.y+=k[1]*.05;clampPos();update()}});
+update();
+
+/* audio: sintesi Web Audio, riverbero a convoluzione, panning stereo */
+let ctx=null,master=null,verb=null,timers=[],noiseBuf=null;
+function startAudio(){
+  if(!ctx){
+    ctx=new(window.AudioContext||window.webkitAudioContext)();
+    master=ctx.createGain();master.gain.value=vol*vol;
+    const comp=ctx.createDynamicsCompressor();master.connect(comp);comp.connect(ctx.destination);
+    // impulso di riverbero sintetico (~3.2 s, decadimento esponenziale, stereo decorrelato)
+    const len=ctx.sampleRate*3.2,ir=ctx.createBuffer(2,len,ctx.sampleRate);
+    for(let c=0;c<2;c++){const d=ir.getChannelData(c);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,3.2)}
+    verb=ctx.createConvolver();verb.buffer=ir;const vg=ctx.createGain();vg.gain.value=.55;verb.connect(vg);vg.connect(master);
+    noiseBuf=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate);
+    const nd=noiseBuf.getChannelData(0);for(let i=0;i<nd.length;i++)nd[i]=Math.random()*2-1;
+    SRC.forEach(s=>{s.bus=ctx.createGain();s.bus.gain.value=0;s.sa=ctx.createGain();s.sb=ctx.createGain();s.sb.gain.value=0;s.sa.connect(s.bus);s.sb.connect(s.bus);
+      s.pan=ctx.createStereoPanner?ctx.createStereoPanner():null;
+      if(s.pan){s.bus.connect(s.pan);s.pan.connect(master);s.pan.connect(verb)}else{s.bus.connect(master);s.bus.connect(verb)}});
+    PZ.bus=ctx.createGain();PZ.bus.gain.value=0;PZ.pan=ctx.createStereoPanner?ctx.createStereoPanner():null;
+    if(PZ.pan){PZ.bus.connect(PZ.pan);PZ.pan.connect(master);PZ.pan.connect(verb)}else{PZ.bus.connect(master);PZ.bus.connect(verb)}
+    bells(PZ.bus);const cg=ctx.createGain();cg.gain.value=.5;cg.connect(PZ.bus);voices(cg);
+    organ(SRC[0].sa);bells(SRC[1].sa);choir(SRC[2].sa);water(SRC[3].sa);harp(SRC[4].sa);
+  }
+  ctx.resume();update();
+}
+function stopAudio(){timers.forEach(clearInterval);timers=[];if(ctx){ctx.close();ctx=null;master=null}SRC.forEach(s=>{s.bus=null;s.pan=null});pris=false;PZ.bus=null;PZ.pan=null;setMode(0)}
+function osc(type,f,out,g=1){const o=ctx.createOscillator(),v=ctx.createGain();o.type=type;o.frequency.value=f;v.gain.value=g;o.connect(v);v.connect(out);o.start();return o}
+function lfo(rate,depth,param){const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=rate;g.gain.value=depth;o.connect(g);g.connect(param);o.start()}
+function every(fn,ms,jit){let f=()=>{fn();timers.push(setTimeout?0:0)};const id=setInterval(fn,ms);timers.push(id);fn()}
+
+
+
+/* ---- Piazza: mappa, poligono, GPS e sorgente sonora al baricentro ---- */
+const PZ={};
+const DMS=(d,m,x)=>d+m/60+x/3600;
+const POLY=[[44,48,17.8,10,19,58.1],[44,48,16.9,10,19,59.1],[44,48,17.6,10,20,0.0],[44,48,18.4,10,20,0.6],[44,48,18.7,10,19,59.9]]
+  .map(a=>({lat:DMS(a[0],a[1],a[2]),lon:DMS(a[3],a[4],a[5])}));
+const Z=19,WORLD=256*Math.pow(2,Z);
+const mx=lon=>(lon+180)/360*WORLD;
+const my=lat=>{const t=Math.sin(lat*Math.PI/180);return(.5-Math.log((1+t)/(1-t))/(4*Math.PI))*WORLD};
+const unlon=x=>x/WORLD*360-180;
+const unlat=y=>Math.atan(Math.sinh(Math.PI-2*Math.PI*y/WORLD))*180/Math.PI;
+// baricentro del poligono (coordinate relative al primo vertice per evitare perdite di precisione)
+const OX=mx(POLY[0].lon),OY=my(POLY[0].lat);
+let A=0,CX=0,CY=0;
+POLY.forEach((a,i)=>{const b=POLY[(i+1)%POLY.length],x0=mx(a.lon)-OX,y0=my(a.lat)-OY,x1=mx(b.lon)-OX,y1=my(b.lat)-OY,c=x0*y1-x1*y0;A+=c;CX+=(x0+x1)*c;CY+=(y0+y1)*c});
+A/=2;CX=CX/(6*A)+OX;CY=CY/(6*A)+OY;
+const CEN={lat:unlat(CY),lon:unlon(CX)};
+const RP=45;                                        // raggio d’ascolto in metri
+const MPP=156543.03392*Math.cos(CEN.lat*Math.PI/180)/Math.pow(2,Z);
+const VM=120,VW=VM/MPP,VH=VW*3/4,VX=CX-VW/2,VY=CY-VH/2;
+const KX=111320*Math.cos(CEN.lat*Math.PI/180),KY=110574;
+const distM=(a,b)=>Math.hypot((a.lon-b.lon)*KX,(a.lat-b.lat)*KY);
+const pct=(lat,lon)=>({x:(mx(lon)-VX)/VW*100,y:(my(lat)-VY)/VH*100});
+const map=$('#map');
+for(let tx=Math.floor(VX/256);tx<=Math.floor((VX+VW)/256);tx++)for(let ty=Math.floor(VY/256);ty<=Math.floor((VY+VH)/256);ty++){
+  const im=new Image();im.alt='';im.draggable=false;im.src=`https://tile.openstreetmap.org/${Z}/${tx}/${ty}.png`;
+  im.style.cssText=`left:${(tx*256-VX)/VW*100}%;top:${(ty*256-VY)/VH*100}%;width:${256/VW*100}%;height:${256/VH*100}%`;
+  im.onerror=()=>im.remove();$('#tiles').append(im)}
+map.insertAdjacentHTML('beforeend',`<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon class="poly" points="${POLY.map(q=>{const c=pct(q.lat,q.lon);return c.x.toFixed(2)+','+c.y.toFixed(2)}).join(' ')}"/></svg>`);
+const cp=pct(CEN.lat,CEN.lon);
+const zRing=document.createElement('div');zRing.className='ring';zRing.style.cssText=`left:${cp.x}%;top:${cp.y}%;width:${2*RP/VM*100}%`;
+const zPt=document.createElement('div');zPt.className='pt';zPt.textContent='♪';zPt.style.left=cp.x+'%';zPt.style.top=cp.y+'%';
+const zLb=document.createElement('div');zLb.className='lbl';zLb.textContent='Sorgente';zLb.style.left=cp.x+'%';zLb.style.top=cp.y+'%';
+const zMe=document.createElement('div');zMe.className='me';zMe.style.display='none';
+map.append(zRing,zPt,zLb,zMe);
+
+let usr=null,sim=false,watchId=null;
+const stat=t=>$('#mapStat').textContent=t;
+function updatePiazza(){
+  let g=0,pan=0;
+  if(!usr){zMe.style.display='none';stat(sim?'Tocca o trascina sulla mappa per muoverti.':watchId!==null?'GPS attivo: in attesa del segnale…':'Attiva il GPS, o prova senza GPS, per avvicinarti al punto sonoro del piazzale.')}
+  else{
+    const d=distM(usr,CEN);g=d<RP?Math.pow(Math.cos(d/RP*Math.PI/2),2):0;
+    pan=Math.max(-.8,Math.min(.8,(CEN.lon-usr.lon)*KX/25));
+    const c=pct(usr.lat,usr.lon),inside=c.x>=0&&c.x<=100&&c.y>=0&&c.y<=100;
+    zMe.style.display=inside?'':'none';zMe.style.left=c.x+'%';zMe.style.top=c.y+'%';
+    stat(`Distanza dal punto sonoro: ${d<1000?Math.round(d)+' m':(d/1000).toFixed(1)+' km'}`+(usr.acc&&!sim?` · precisione ±${Math.round(usr.acc)} m`:'')+(g===0?` · fuori dal raggio d’ascolto (${RP} m)`:''));
+  }
+  zPt.style.setProperty('--g',g);zRing.style.setProperty('--g',g);
+  if(ctx&&PZ.bus){const on=current==='piazza'?1:0;PZ.bus.gain.setTargetAtTime(g*.9*on,ctx.currentTime,sim?.1:.5);if(PZ.pan)PZ.pan.pan.setTargetAtTime(pan,ctx.currentTime,sim?.1:.5)}
+}
+function stopGps(){if(watchId!==null){navigator.geolocation.clearWatch(watchId);watchId=null}$('#gps').textContent='Attiva GPS'}
+/* Filtro di Kalman 2D (in metri) pesato sulla precisione dichiarata dal GPS: i rilevamenti poco affidabili contano meno,
+   le letture ferme si stabilizzano, il passo di una persona (~1.4 m/s) viene seguito senza ritardo eccessivo. */
+let kf=null;const QV=3.2,AMAX=80;
+function smooth(c,t){
+  const acc=Math.max(c.accuracy||15,4);
+  if(!kf){kf={lat:c.latitude,lon:c.longitude,v:acc*acc,t};return kf}
+  if(acc>AMAX&&kf.v<acc*acc)return kf;                       // lettura troppo imprecisa: la ignoro
+  const dt=Math.max(0,Math.min(10,(t-kf.t)/1000));kf.t=t;
+  kf.v+=dt*QV*QV+.25;                                          // l'incertezza cresce col tempo (la persona può muoversi)
+  const dx=(c.longitude-kf.lon)*KX,dy=(c.latitude-kf.lat)*KY;
+  if(Math.hypot(dx,dy)>4*Math.sqrt(kf.v+acc*acc)&&acc>25)return kf; // salto improvviso con scarsa precisione: scarto
+  const k=kf.v/(kf.v+acc*acc);                                 // guadagno di Kalman
+  kf.lat+=k*(c.latitude-kf.lat);kf.lon+=k*(c.longitude-kf.lon);kf.v=(1-k)*kf.v;
+  return kf}
+function startGps(){
+  if(!navigator.geolocation){stat('Questo dispositivo non supporta la geolocalizzazione.');return}
+  setSim(false);usr=null;kf=null;
+  watchId=navigator.geolocation.watchPosition(
+    q=>{const f=smooth(q.coords,q.timestamp||Date.now());usr={lat:f.lat,lon:f.lon,acc:q.coords.accuracy};updatePiazza()},
+    e=>{stat(e.code===1?'Permesso negato: consenti l’accesso alla posizione. Se questa è un’anteprima, apri la pagina in una scheda del browser.':e.code===2?'Posizione non disponibile.':'Segnale GPS lento, riprovo…')},
+    {enableHighAccuracy:true,maximumAge:1000,timeout:20000});
+  $('#gps').textContent='Disattiva GPS';updatePiazza();
+}
+function setSim(on){sim=on;map.classList.toggle('sim',on);$('#sim').textContent=on?'Termina la prova':'Prova senza GPS';
+  if(on){stopGps();usr={lat:CEN.lat-.00027,lon:CEN.lon-.00015,acc:0}}else if(watchId===null)usr=null;updatePiazza()}
+$('#gps').onclick=()=>{if(watchId!==null){stopGps();usr=null;updatePiazza()}else startGps()};
+$('#sim').onclick=()=>setSim(!sim);
+function simMove(e){const r=map.getBoundingClientRect();
+  usr={lat:unlat(VY+(e.clientY-r.top)/r.height*VH),lon:unlon(VX+(e.clientX-r.left)/r.width*VW),acc:0};updatePiazza()}
+map.addEventListener('pointerdown',e=>{if(!sim)return;map.setPointerCapture(e.pointerId);simMove(e)});
+map.addEventListener('pointermove',e=>{if(sim&&map.hasPointerCapture(e.pointerId))simMove(e)});
+
+/* ---- Modalità: chiesa sacra / prigione, con dissolvenza incrociata ---- */
+const NAMES=[['Organo','Campane','Coro','Acqua','Arpa'],['Chiavi','Passi','Voci','Vento','Falegnameria']];
+let mode=0,pris=false;
+function setMode(m){mode=m;
+  if(ctx){if(m&&!pris){pris=true;keys(SRC[0].sb);steps(SRC[1].sb);voices(SRC[2].sb);wind(SRC[3].sb);carp(SRC[4].sb)}
+    const t=ctx.currentTime;SRC.forEach(s=>{s.sa.gain.setTargetAtTime(m?0:1,t,.45);s.sb.gain.setTargetAtTime(m?1:0,t,.45)})}
+  SRC.forEach((s,i)=>{s.n=NAMES[m][i];s.lb.textContent=s.n});
+  plan.classList.toggle('pris',!!m);
+  $('#mode').textContent=m?'Torna ai suoni della chiesa':'Passa ai suoni della prigione';
+  shown=-2;showInfo();update()}
+$('#mode').onclick=()=>setMode(1-mode);
+const rnd=(a,b)=>a+Math.random()*(b-a);
+function tone(out,f,t,a,d,type,f2){const o=ctx.createOscillator(),g=ctx.createGain();o.type=type||'sine';o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+d);
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(a,t+.004);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(out);o.start(t);o.stop(t+d+.05)}
+function click(out,t,a,d,f,type,q){const n=ctx.createBufferSource();n.buffer=noiseBuf;const b=ctx.createBiquadFilter();b.type=type||'bandpass';b.frequency.value=f;b.Q.value=q||1;
+  const g=ctx.createGain();g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(a,t+.003);g.gain.exponentialRampToValueAtTime(.0001,t+d);n.connect(b);b.connect(g);g.connect(out);n.start(t,Math.random()*1.5);n.stop(t+d+.05)}
+function loopNoise(){const n=ctx.createBufferSource();n.buffer=noiseBuf;n.loop=true;return n}
+/* 1 · Chiavi: tintinnio metallico inarmonico + tonfo di serratura */
+function keys(out){const go=()=>{const t=ctx.currentTime,n=3+Math.floor(Math.random()*4);
+  for(let i=0;i<n;i++){const u=t+i*rnd(.05,.11);[2100,3300,4700,6100].forEach(f=>tone(out,f*rnd(.95,1.05),u,.07,.22));click(out,u,.15,.03,5000,'highpass')}
+  const u=t+n*.1+.5;tone(out,75,u,.6,.35,'sine',45);click(out,u,.4,.12,500,'lowpass')};
+  timers.push(setInterval(go,4600));go()}
+/* 2 · Passi: cinque passi cadenzati con tonfo grave e colpo di tacco */
+function steps(out){const go=()=>{const t=ctx.currentTime;for(let i=0;i<5;i++){const u=t+i*.55;tone(out,90,u,.5,.18,'sine',50);click(out,u,.25,.08,900,'lowpass')}};
+  timers.push(setInterval(go,4200));go()}
+/* 3 · Voci: brusio di rumore filtrato su formanti, modulato a caso */
+function voices(out){const n=loopNoise(),m=ctx.createGain();m.gain.value=.5;
+  [[450,.9],[1400,.6],[2600,.25]].forEach(([f,g])=>{const b=ctx.createBiquadFilter();b.type='bandpass';b.frequency.value=f;b.Q.value=5;const v=ctx.createGain();v.gain.value=g;n.connect(b);b.connect(v);v.connect(m)});
+  m.connect(out);n.start();timers.push(setInterval(()=>m.gain.setTargetAtTime(rnd(.15,.9),ctx.currentTime,.25),350))}
+/* 4 · Vento: rumore con due risonanze che oscillano lentamente */
+function wind(out){const n=loopNoise(),g=ctx.createGain();g.gain.value=.5;
+  [[420,.07,200],[900,.11,350]].forEach(([f,r,d])=>{const b=ctx.createBiquadFilter();b.type='bandpass';b.frequency.value=f;b.Q.value=8;n.connect(b);b.connect(g);lfo(r,d,b.frequency)});
+  lfo(.05,.25,g.gain);g.connect(out);n.start()}
+/* 5 · Falegnameria: serrate avanti-indietro, poi colpi di martello sul legno */
+function carp(out){const go=()=>{const t=ctx.currentTime,n=loopNoise(),b=ctx.createBiquadFilter(),g=ctx.createGain();
+    b.type='bandpass';b.Q.value=1.2;g.gain.setValueAtTime(.0001,t);
+    for(let k=0;k<5;k++){const u=t+k*.45;b.frequency.setValueAtTime(1800,u);b.frequency.linearRampToValueAtTime(2800,u+.2);b.frequency.linearRampToValueAtTime(1900,u+.43);
+      g.gain.linearRampToValueAtTime(.45,u+.06);g.gain.linearRampToValueAtTime(.06,u+.22);g.gain.linearRampToValueAtTime(.4,u+.3);g.gain.linearRampToValueAtTime(.0001,u+.43)}
+    n.connect(b);b.connect(g);g.connect(out);n.start(t);n.stop(t+2.3);
+    for(let k=0;k<5;k++){const u=t+2.8+k*.4;tone(out,520,u,.6,.07,'sine',380);tone(out,140,u,.7,.14,'sine',90);click(out,u,.3,.03,1600,'bandpass',2)}};
+  timers.push(setInterval(go,6200));go()}
+/* 1 · Organo: bordone grave di dente di sega filtrato, quinta, respiro lento del filtro */
+function organ(out){const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=520;lp.Q.value=2;lp.connect(out);
+  [[55,.5],[110,.4],[165,.25],[220,.15]].forEach(([f,g])=>osc('sawtooth',f,lp,g*.5));lfo(.12,220,lp.frequency)}
+/* 2 · Campane: sintesi additiva inarmonica con decadimento lungo */
+function bells(out){const notes=[392,523.25,659.25,783.99,587.33];
+  const hit=()=>{const f=notes[Math.floor(Math.random()*notes.length)],t=ctx.currentTime;
+    [[1,.5,5],[2,.25,3.5],[2.76,.22,3],[5.4,.1,1.6],[8.93,.05,1]].forEach(([r,a,d])=>{
+      const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=f*r;o.connect(g);g.connect(out);
+      g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(a*.6,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.start(t);o.stop(t+d+.1)})};
+  timers.push(setInterval(hit,3400));hit()}
+/* 3 · Coro: voci detunate con formanti (vocale «a») e vibrato */
+function choir(out){const mix=ctx.createGain();mix.gain.value=1.3;
+  [[800,.9],[1150,.5],[2800,.2]].forEach(([f,g])=>{const b=ctx.createBiquadFilter();b.type='bandpass';b.frequency.value=f;b.Q.value=6;const v=ctx.createGain();v.gain.value=g;mix.connect(b);b.connect(v);v.connect(out)});
+  [[196,-6],[246.94,4],[293.66,-3],[392,5]].forEach(([f,c])=>{const o=osc('sawtooth',f,mix,.18);o.detune.value=c;lfo(5.2,5,o.detune)});
+  lfo(.08,.3,mix.gain)}
+/* 4 · Acqua: gocce con glissando ascendente su rumore leggero */
+function water(out){const n=ctx.createBufferSource();n.buffer=noiseBuf;n.loop=true;const bp=ctx.createBiquadFilter();bp.type='bandpass';bp.frequency.value=3200;bp.Q.value=.8;
+  const ng=ctx.createGain();ng.gain.value=.03;n.connect(bp);bp.connect(ng);ng.connect(out);n.start();
+  const drip=()=>{if(Math.random()<.35)return;const t=ctx.currentTime,o=ctx.createOscillator(),g=ctx.createGain(),f=900+Math.random()*1500;
+    o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(f*1.8,t+.08);
+    g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.35,t+.005);g.gain.exponentialRampToValueAtTime(.0001,t+.25);
+    o.connect(g);g.connect(out);o.start(t);o.stop(t+.3)};
+  timers.push(setInterval(drip,380))}
+/* 5 · Arpa: note pizzicate su scala pentatonica di re */
+function harp(out){const sc=[293.66,349.23,440,523.25,587.33,698.46];
+  const pluck=()=>{const t=ctx.currentTime,f=sc[Math.floor(Math.random()*sc.length)],o=ctx.createOscillator(),g=ctx.createGain(),lp=ctx.createBiquadFilter();
+    o.type='triangle';o.frequency.value=f;lp.type='lowpass';lp.frequency.setValueAtTime(3500,t);lp.frequency.exponentialRampToValueAtTime(500,t+1.5);
+    g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.9,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+2.2);
+    o.connect(lp);lp.connect(g);g.connect(out);o.start(t);o.stop(t+2.3)};
+  timers.push(setInterval(()=>{if(Math.random()<.8)pluck()},650))}
+</script>
+</body>
+</html>
+
+</body></html>
